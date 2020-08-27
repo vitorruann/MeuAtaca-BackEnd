@@ -1,0 +1,21 @@
+{
+  "name": "meuAtacaBack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "server": "node src/server.js",
+    "client": "cd ../frontend/ && npx serve -s build",
+    "start": "concurrently \"yarn run server\" \"yarn run client\""
+},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
+  }
+}
