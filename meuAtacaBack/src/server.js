@@ -1,11 +1,8 @@
-const express = require('express');
-const routes = require('./routes');
-const app = express();
-const port = 8050
+import app from './app';
 
-app.use(express.json());
-app.use(routes);
+const port = 8050;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
