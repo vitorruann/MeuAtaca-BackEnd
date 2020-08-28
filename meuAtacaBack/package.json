@@ -8,9 +8,10 @@
     "server": "node src/server.js",
     "client": "cd ../frontend/ && npx serve -s build",
     "start": "concurrently \"yarn run server\" \"yarn run client\""
-},
+  },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.10.1"
   },
   "devDependencies": {
     "eslint": "^7.7.0",
