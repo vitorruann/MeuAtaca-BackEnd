@@ -1,13 +1,25 @@
 import UserMarket from '../models/UserMarket';
-import { response } from 'express';
-
+import bcrypt from 'bcryptjs';
 class UserMarketController {
   async store(req, res) {
-    const user = req.body;
+    const { name, cnpj, password} = req.body;
 
-    const response = await UserMarket.create(user);
+    if (password) {
+      const password_hash = await bcrypt.hash(password, 8);
 
+      const userMarket = {
+        name,
+        cnpj,
+        password_hash
+      }
+
+      console.log(userMarket);
+
+    const response = await UserMarket.create(userMarket);
     return res.json(response)
+    } else {
+      return res.status(400).json(({ erro: "Senha não cadastrada"}));
+    }
   }
 
   async index(req, res) {

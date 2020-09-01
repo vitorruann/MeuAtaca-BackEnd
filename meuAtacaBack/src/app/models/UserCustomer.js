@@ -12,7 +12,7 @@ const UserCustomerSchema = new Schema({
     required: true
   },
 
-  password : {
+  password_hash : {
     type: String,
     required: true
   },
@@ -21,7 +21,6 @@ const UserCustomerSchema = new Schema({
     type : String,
     required: true
   }
-
 });
 
 export default model("UserCustomer", UserCustomerSchema);

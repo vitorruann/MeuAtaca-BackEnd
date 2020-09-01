@@ -2,15 +2,19 @@ import { Router } from 'express';
 import UserCustomerController from './app/controllers/UserCustomerController';  
 import UserMarketController from './app/controllers/UserMarketController';  
 import PromotionController from './app/controllers/PromotionController';  
+import SessionController from './app/controllers/SessionController';  
 
 const router = new Router();
 
 router.post('/newCustomer', UserCustomerController.store);
+router.post('/newMarket', UserMarketController.store);
+router.post('/sessions', SessionController.store);
+router.post('/sessionsMarket', SessionController.storeM);
+
 router.get('/customer/:id', UserCustomerController.show);
 router.put('/updateCustomer/:id', UserCustomerController.update);
 router.delete('/deleteCustomer/:id', UserCustomerController.destroy);
 
-router.post('/newMarket', UserMarketController.store);
 router.get('/allMarket', UserMarketController.index);
 router.get('/market/:id', UserMarketController.show);
 router.put('/updateMarket/:id', UserMarketController.update);

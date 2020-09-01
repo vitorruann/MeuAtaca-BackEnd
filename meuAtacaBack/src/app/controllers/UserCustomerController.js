@@ -1,11 +1,26 @@
 import UserCustumer from '../models/UserCustomer';
+import bcrypt from 'bcryptjs';
 
 class UserCustomerController {
   async store(req, res) {
-    const user = req.body;
+    const { name, cpf, password, email } = req.body;
 
-    const response = await UserCustumer.create(user)
-    return res.json(response);
+    if (password) {
+      const password_hash = await bcrypt.hash(password, 8);
+
+      const user = {
+        name,
+        cpf,
+        password_hash,
+        email
+      }
+  
+      const response = await UserCustumer.create(user)
+      return res.json(response);
+    
+    } else {
+      return res.status(400).json(({ erro: "Senha não cadastrada"}));
+    }
   }
 
   async show(req, res) {
@@ -18,9 +33,9 @@ class UserCustomerController {
 
   async update(req, res) {
     const { id } = req.params;
-    const promo = req.body;
+    const user = req.body;
 
-    const response = await UserCustumer.findByIdAndUpdate({_id: id}, promo)
+    const response = await UserCustumer.findByIdAndUpdate({_id: id}, user)
 
     return res.json(response);
   }

@@ -12,7 +12,7 @@ const UserMarketSchema = new Schema({
     required: true
   },
 
-  password : {
+  password_hash : {
     type: String,
     required: true
   }
