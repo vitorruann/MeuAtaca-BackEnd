@@ -1,18 +1,6 @@
-<<<<<<< HEAD
 <center> <h1>MeuAtaca-BackEnd</h1> </center> 
-=======
-<p align="center">
-<strong># MeuAtaca-BackEnd </strong>
-  
-  <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/images/LogoFundoAzuk.jpg"/>
-</p>
-
-
-BackEnd para a aplicação que será criada com o intuito de ser um folheto digital para mercados e atacadistas. Este backend fornecerá rotas para o aplicativo par os clientes e a aplicação WEB para os logistas.
->>>>>>> eb7a804f62be250c4f750cb55ef703da70334eaa
 
 <p align="center">
-  
   <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/images/LogoFundoAzuk.jpg"/>
 </p>
 
