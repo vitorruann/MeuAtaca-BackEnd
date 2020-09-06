@@ -1,4 +1,9 @@
 # MeuAtaca-BackEnd
+
+<p align="center">
+  <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/images/LogoFundoAzuk.jpg"/>
+</p>
+
 ![Alt Text](https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/images/LogoFundoAzuk.jpg)
 
 
