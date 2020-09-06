@@ -12,6 +12,7 @@
 
 ## Sobre o MeuAtacadista
 </br>
+
 O aplicativo tem como objetivo por parte dos mercados, inserir informações sobre produtos e divulgação em massa sobre as **melhores ofertas**, com o intuito de chamar **mais cliente** para o seu negócio. Além de poupar o tempo do consumidor e melhorar assim a qualidade na prestação de serviço para eles. O aplicativo será uma grande ferramenta para **divulgação**.
 </br>
 </br>
@@ -20,6 +21,7 @@ Para os usuários, o aplicativo visa facilitar a sua procura dos produtos mais e
 
 ## Sobre o Backend
 </br>
+
 BackEnd para a aplicação que será criada com o intuito de ser um **folheto** digital para mercados e atacadistas. Fornecerá rotas para o frontend **Mobile** para os clientes e frontend **WEB** para os logistas.
 </br>
 </br>
@@ -29,28 +31,28 @@ Será desenvolvido uma **API** de backend utilizando node.js, e estará disponiv
 </br>
 
 ### Usuários Mercados/Atacadistas (WEB)
-* Rotas para manter Mercados/Atacadistas
+* **Rotas para manter Mercados/Atacadistas**
   * Criar usuário
   * Visualizar usuário
   * Alterar usuário
   * Deletar usuário 
-* Rotas para manter promoção
+* **Rotas para manter promoção**
   * Criar promoção
   * Visualizar promoção por mercado
   * Excluir promoção
-* Rota para login
+* **Rota para login**
   * Login dos Mercados/Atacadistas
 
 ### Usuários do aplicativo (Mobile)
-* Rotas para manter usuários
-  * Criar usuário
-  * Visualizar usuário
-  * Alterar usuário
-  * Deletar usuário
-* Rotas para visualizar promoções
+* **Rotas para manter usuários**
+  * [Criar usuário](/Info/userCustomer/Criar/README.md)
+  * [Visualizar usuário](Info/userCustomer/Visualizar/README.md)
+  * [Alterar usuário](Info/userCustomer/Alterar/README.md)
+  * [Deletar usuário](Info/userCustomer/Deletar/README.md)
+* **Rotas para visualizar promoções**
   * Visualizar promoção por mercado
   * Visualizar todas as promoções
-* Rota para login
+* **Rota para login**
   * Login dos Usuários
 ## Licença
 MIT © [@Vitorruan](https://github.com/vitorruann)
