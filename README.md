@@ -1,5 +1,5 @@
 <p align="center">
-<p># MeuAtaca-BackEnd </p>
+<strong># MeuAtaca-BackEnd </strong>
   
   <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/images/LogoFundoAzuk.jpg"/>
 </p>
