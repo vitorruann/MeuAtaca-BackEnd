@@ -1,4 +1,6 @@
-<center> MeuAtaca-BackEnd </center> 
+<div align="center">
+  <h1>MeuAtaca-BackEnd</h1>
+</div>
 
 <p align="center">
   <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/images/LogoFundoAzuk.jpg"/>
