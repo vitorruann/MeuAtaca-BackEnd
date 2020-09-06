@@ -33,6 +33,10 @@ class PromotionController {
     const { product, value, quantity, description } = req.body;
     const marketID = req.params.id;
 
+    if (!marketID) {
+      return res.status(400).json({ error: "Usuário não foi informado" }); 
+    }
+
     const promocao = {
       product,
       value,

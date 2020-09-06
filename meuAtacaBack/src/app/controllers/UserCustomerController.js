@@ -17,7 +17,30 @@ class UserCustomerController {
   // }
 
   async store(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      cpf: Yup.string().required(),
+      email: Yup.string().required(),
+      password: Yup.string().min(6).required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: "Validação de dados falhou" });
+    }
+
     const { name, cpf, password, email } = req.body;
+
+    const emailExist = await UserCustumer.find({email: email});
+    const cpfExist = await UserCustumer.find({cpf: cpf});
+
+    if (emailExist) {
+      return res.status(400).json({ error: "Email já cadastrado." });
+    }
+
+    if (cpfExist) {
+      return res.status(400).json({ error: "CPF já cadastrado." });
+    }
+
 
     if (password) {
       const password_hash = await bcrypt.hash(password, 8);
@@ -48,6 +71,10 @@ class UserCustomerController {
 
   async show(req, res) {
     const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ error: "Usuário não foi informado" }); 
+    }
 
     const response = await UserCustumer.findById(id);
 
@@ -87,9 +114,17 @@ class UserCustomerController {
     }
 
     const { id } = req.params;
-    const { email, oldPassword, password } = req.body;
+    const { email, oldPassword, password, cpf } = req.body;
 
     const userCustomer = await UserCustumer.findById(id);
+
+    if (userCustomer.cpf !== cpf && cpf) {
+      const cpfExist = await UserCustumer.find({cpf: cpf});
+
+      if (cpfExist) {
+        return res.status(400).json({ error: "CPF já cadastrado." });
+      }
+    }
     
     if (userCustomer.email !== email && email) {
       const userExist = await UserCustumer.find({ email: email});
@@ -112,7 +147,7 @@ class UserCustomerController {
         ...req.body,
         password_hash
       }
-      console.log("a")
+
       const response = await UserCustumer.findByIdAndUpdate({_id: id}, userUpdate);
 
       return res.json(response);
@@ -133,6 +168,10 @@ class UserCustomerController {
 
   async destroy(req, res) {
     const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ error: "Usuário não foi informado" }); 
+    }
 
     const response = await UserCustumer.findByIdAndRemove(id);
 
