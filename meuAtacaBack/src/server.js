@@ -2,7 +2,5 @@ import app from './app';
 
 const port = 8050;
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+app.listen(process.env.PORT || port);
 
