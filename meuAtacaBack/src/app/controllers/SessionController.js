@@ -30,12 +30,10 @@ class SessionController {
     const { id, name, cpf } = user;
 
     return res.json({
-      user: {
-        id,
-        name,
-        cpf,
-        email
-      }  
+      id,
+      name,
+      cpf,
+      email
     });
   }
 
@@ -66,10 +64,8 @@ class SessionController {
     const { name } = userMarket;
 
     return res.json({
-      userMarket: {
-        name,
-        cnpj
-      }
+      name,
+      cnpj
     })
   }
 }

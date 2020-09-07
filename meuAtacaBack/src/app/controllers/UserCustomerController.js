@@ -28,10 +28,10 @@ class UserCustomerController {
       return res.status(400).json({ error: "Validação de dados falhou" });
     }
 
-    const { name, cpf, password, email } = req.body;
+    const { name: nameR , cpf: cpfR, password, email: emailR } = req.body;
 
-    const emailExist = await UserCustumer.find({email: email});
-    const cpfExist = await UserCustumer.find({cpf: cpf});
+    const emailExist = await UserCustumer.findOne({email: emailR});
+    const cpfExist = await UserCustumer.findOne({cpf: cpfR});
 
     if (emailExist) {
       return res.status(400).json({ error: "Email já cadastrado." });
@@ -46,14 +46,24 @@ class UserCustomerController {
       const password_hash = await bcrypt.hash(password, 8);
 
       const user = {
-        name,
-        cpf,
+        name: nameR,
+        cpf: cpfR,
         password_hash,
-        email
+        email: emailR
       }
   
-      const response = await UserCustumer.create(user)
-      return res.json(response);
+      const response = await UserCustumer.create(user);
+
+      const { _id, name, cpf, email } = response;
+
+      const userCreate = {
+        id: _id,
+        name,
+        cpf,
+        email
+      }
+
+      return res.json(userCreate);
     
     } else {
       return res.status(400).json(({ erro: "Senha não cadastrada"}));
@@ -78,7 +88,16 @@ class UserCustomerController {
 
     const response = await UserCustumer.findById(id);
 
-    return res.json(response);
+    const { _id, name, cpf, email } = response;
+
+    const user = {
+      id: _id,
+      name,
+      cpf,
+      email
+    }
+
+    return res.json(user);
   }
 
   // Aplicação Mobile faz uma requisição http do tipo put para o endereço:
@@ -114,20 +133,20 @@ class UserCustomerController {
     }
 
     const { id } = req.params;
-    const { email, oldPassword, password, cpf } = req.body;
+    const { email: emailR, oldPassword, password, cpf: cpfR } = req.body;
 
     const userCustomer = await UserCustumer.findById(id);
 
-    if (userCustomer.cpf !== cpf && cpf) {
-      const cpfExist = await UserCustumer.find({cpf: cpf});
+    if (userCustomer.cpf !== cpfR && cpfR) {
+      const cpfExist = await UserCustumer.findOne({cpf: cpfR});
 
       if (cpfExist) {
         return res.status(400).json({ error: "CPF já cadastrado." });
       }
     }
     
-    if (userCustomer.email !== email && email) {
-      const userExist = await UserCustumer.find({ email: email});
+    if (userCustomer.email !== emailR && emailR) {
+      const userExist = await UserCustumer.find({ email: emailR});
     
       if (userExist) {
         return res.status(400).json({ error: "Email já cadastrado." });
@@ -150,12 +169,30 @@ class UserCustomerController {
 
       const response = await UserCustumer.findByIdAndUpdate({_id: id}, userUpdate);
 
-      return res.json(response);
+      const { _id, name, cpf, email } = response;
+
+      const user = {
+        id: _id,
+        name,
+        cpf,
+        email
+      }
+
+      return res.json(user);
     }
 
     const response = await UserCustumer.findByIdAndUpdate({_id: id}, req.body);
 
-    return res.json(response);
+    const { _id, name, cpf, email } = response;
+
+    const user = {
+      id: _id,
+      name,
+      cpf,
+      email
+    }
+
+    return res.json(user);
   }
 
   // Aplicação Mobile faz uma requisição http do tipo post para o endereço:
@@ -175,7 +212,16 @@ class UserCustomerController {
 
     const response = await UserCustumer.findByIdAndRemove(id);
 
-    return res.json(response);
+    const { _id, name, cpf, email } = response;
+
+    const user = {
+      id: _id,
+      name,
+      cpf,
+      email
+    }
+
+    return res.json(user);
   }
 }
 

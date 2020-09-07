@@ -13,30 +13,46 @@ class UserMarketController {
       return res.status(400).json({ error: "Validação de dados falhou" });
     }
 
-    const { name, cnpj, password} = req.body;
+    const {name: nameR, cnpj: cnpjR , password: passwordR} = req.body;
 
-    const cnpjExist = await UserMarket.find({cnpj: cnpj});
+    const cnpjExist = await UserMarket.findOne({cnpj: cnpjR});
 
     if (cnpjExist) {
       return res.status(400).json({ error: "CNPJ já cadastrado." });
     }
 
-    const password_hash = await bcrypt.hash(password, 8);
+    const password_hash = await bcrypt.hash(passwordR, 8);
 
-    const userMarket = {
-      name,
-      cnpj,
+    const addUser = {
+      name: nameR,
+      cnpj: cnpjR,
       password_hash
     }
 
-    const response = await UserMarket.create(userMarket);
-    return res.json(response)
+    const response = await UserMarket.create(addUser);
+
+    const { _id, name , cnpj } = response;
+
+    const userMarket = {
+      id: _id,
+      name,
+      cnpj
+    };
+    
+    return res.json(userMarket)
   }
 
   async index(req, res) {
     const response = await UserMarket.find();
 
-    return res.json(response);
+    const allMarkets = response.map(r => ({
+      id: r._id,
+      name: r.name,
+      cnpj: r.cnpj,
+    }));
+
+    
+    return res.json(allMarkets);
   }
 
   async show(req, res) {
@@ -47,8 +63,16 @@ class UserMarketController {
     }
 
     const response = await UserMarket.findById(id);
+    
+    const { _id, name, cnpj } =  response;
 
-    return res.json(response);
+    const userMarket = {
+      id: _id,
+      name,
+      cnpj
+    }
+
+    return res.json(userMarket);
   }
 
   async update(req, res) {
@@ -70,13 +94,13 @@ class UserMarketController {
       return res.status(400).json({ error: "Validação de dados falhou" });
     }
     const { id } = req.params;
-    const { cnpj, password, oldPassword } = req.body;
+    const { cnpj: cnpjR , password: passwordR, oldPassword } = req.body;
 
-    const userMarket = await UserMarket.findById(id);
+    const userReturn = await UserMarket.findById(id);
 
 
-    if (cnpj !== userMarket.cnpj && cnpj) {
-      const cnpjExist = await UserMarket.findOne({cnpj: cnpj});
+    if (cnpjR !== userReturn.cnpj && cnpjR) {
+      const cnpjExist = await UserMarket.findOne({cnpj: cnpjR});
       
       if (cnpjExist) {
 
@@ -84,14 +108,14 @@ class UserMarketController {
       }  
     }
 
-    if (password) {
-      const checkPassword = await bcrypt.compare(oldPassword, userMarket.password_hash);
+    if (passwordR) {
+      const checkPassword = await bcrypt.compare(oldPassword, userReturn.password_hash);
 
       if (oldPassword && !(checkPassword)) {
         return res.status(401).json({ error: "Senha incorreta" });
       }  
 
-      const password_hash = await bcrypt.hash(password, 8);
+      const password_hash = await bcrypt.hash(passwordR, 8);
 
       const userUpdate = {
         ...req.body,
@@ -99,12 +123,29 @@ class UserMarketController {
       }
 
       const response = await UserMarket.findByIdAndUpdate({_id: id}, userUpdate);
-      return res.json(response);
+
+      const { _id, name, cnpj } = response;
+
+      const userMarket = {
+        id: _id,
+        name,
+        cnpj
+      }
+
+      return res.json(userMarket);
     }
 
     const response = await UserMarket.findByIdAndUpdate({_id: id}, req.body);
 
-    return res.json(response);
+    const { _id, name, cnpj } = response;
+
+      const userMarket = {
+        id: _id,
+        name,
+        cnpj
+      }
+
+      return res.json(userMarket);
   }
 
   async destroy(req, res) {
@@ -116,7 +157,15 @@ class UserMarketController {
 
     const response = await UserMarket.findByIdAndDelete(id);
 
-    return res.json(response);
+    const { _id, name, cnpj } = response;
+
+    const userDeleted = {
+      id: _id,
+      name,
+      cnpj
+    }
+
+    return res.json(userDeleted);
   }
 }
 
