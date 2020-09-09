@@ -146,7 +146,7 @@ class UserCustomerController {
     }
     
     if (userCustomer.email !== emailR && emailR) {
-      const userExist = await UserCustumer.find({ email: emailR});
+      const userExist = await UserCustumer.findOne({ email: emailR});
     
       if (userExist) {
         return res.status(400).json({ error: "Email já cadastrado." });
