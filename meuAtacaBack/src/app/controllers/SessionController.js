@@ -61,9 +61,10 @@ class SessionController {
       return res.status(401).json({ error: "Senha incorreta"});
     }
 
-    const { name } = userMarket;
+    const { name, id } = userMarket;
 
     return res.json({
+      id,
       name,
       cnpj
     })
