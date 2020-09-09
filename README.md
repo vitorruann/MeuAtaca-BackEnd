@@ -31,28 +31,12 @@ Será desenvolvido uma **API** de backend utilizando node.js, e estará disponiv
 </br>
 
 ### Usuários Mercados/Atacadistas (WEB)
-* **Rotas para manter Mercados/Atacadistas**
-  * Criar usuário
-  * Visualizar usuário
-  * Alterar usuário
-  * Deletar usuário 
-* **Rotas para manter promoção**
-  * Criar promoção
-  * Visualizar promoção por mercado
-  * Excluir promoção
-* **Rota para login**
-  * Login dos Mercados/Atacadistas
-
+* [Rotas para manter Mercados/Atacadistas](Info/userMarket/README.md)
+* [Rotas para manter promoção](Info/promotion/README.md)
+* [Rota para login](Info/login/marketLogin/README.md)
 ### Usuários do aplicativo (Mobile)
-* **Rotas para manter usuários**
-  * [Criar usuário](/Info/userCustomer/Criar/README.md)
-  * [Visualizar usuário](Info/userCustomer/Visualizar/README.md)
-  * [Alterar usuário](Info/userCustomer/Alterar/README.md)
-  * [Deletar usuário](Info/userCustomer/Deletar/README.md)
-* **Rotas para visualizar promoções**
-  * Visualizar promoção por mercado
-  * Visualizar todas as promoções
-* **Rota para login**
-  * Login dos Usuários
+* [Rotas para manter usuários](Info/userCustomer/README.md)
+* [Rotas para manter promoções](Info/promotion/README.md)
+* [Rota para login](Info/login/userLogin/README.md)
 ## Licença
 MIT © [@Vitorruan](https://github.com/vitorruann)
