@@ -3,6 +3,24 @@ import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 class UserMarketController {
   async store(req, res) {
+    const {name: nameR, cnpj: cnpjR , password: passwordR} = req.body;
+
+    if (nameR !== undefined) {
+      if (nameR.trim() === "") {
+        delete req.body.name;
+      }
+    }
+    if (cnpjR !== undefined) {
+      if (cnpjR.trim() === "") {
+        delete req.body.cnpj;
+      }  
+    }
+    if (passwordR !== undefined) {
+      if (passwordR.trim() === "") {
+        delete req.body.password;
+      }  
+    }
+
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       cnpj: Yup.string().required(),
@@ -13,7 +31,6 @@ class UserMarketController {
       return res.status(400).json({ error: "Validação de dados falhou" });
     }
 
-    const {name: nameR, cnpj: cnpjR , password: passwordR} = req.body;
 
     const cnpjExist = await UserMarket.findOne({cnpj: cnpjR});
 
@@ -63,7 +80,7 @@ class UserMarketController {
     }
 
     const response = await UserMarket.findById(id);
-    
+
     const { _id, name, cnpj } =  response;
 
     const userMarket = {
@@ -76,6 +93,29 @@ class UserMarketController {
   }
 
   async update(req, res) {
+    const { name: nameR, cnpj: cnpjR , password: passwordR, oldPassword } = req.body;
+
+    if (nameR !== undefined) {
+      if (nameR.trim() === "") {
+        delete req.body.name;
+      }
+    }
+    if (cnpjR !== undefined) {
+      if (cnpjR.trim() === "") {
+        delete req.body.cnpj;
+      }  
+    }
+    if (oldPassword !== undefined) {
+      if (oldPassword.trim() === "") {
+        delete req.body.oldPassword;
+      }  
+    }
+    if (passwordR !== undefined) {
+      if (passwordR.trim() === "") {
+        delete req.body.password;
+      }  
+    }
+
     const schema = Yup.object().shape({
       name: Yup.string(),
       cnpj: Yup.string(),
@@ -94,7 +134,6 @@ class UserMarketController {
       return res.status(400).json({ error: "Validação de dados falhou" });
     }
     const { id } = req.params;
-    const { cnpj: cnpjR , password: passwordR, oldPassword } = req.body;
 
     const userReturn = await UserMarket.findById(id);
 
@@ -108,7 +147,7 @@ class UserMarketController {
       }  
     }
 
-    if (passwordR) {
+    if (passwordR && oldPassword) {
       const checkPassword = await bcrypt.compare(oldPassword, userReturn.password_hash);
 
       if (oldPassword && !(checkPassword)) {

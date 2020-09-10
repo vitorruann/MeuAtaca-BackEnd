@@ -17,6 +17,29 @@ class UserCustomerController {
   // }
 
   async store(req, res) {
+    const { name: nameR , cpf: cpfR, password, email: emailR } = req.body;
+
+    if (nameR !== undefined) {
+      if (nameR.trim() === "") {
+        delete req.body.name;
+      }
+    }
+    if (emailR !== undefined) {
+      if (emailR.trim() === "") {
+        delete req.body.email;
+      }  
+    }
+    if (cpfR !== undefined) {
+      if (cpfR.trim() === "") {
+        delete req.body.cpf;
+      }  
+    }
+    if (password !== undefined) {
+      if (password.trim() === "") {
+        delete req.body.password;
+      }  
+    }
+
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       cpf: Yup.string().required(),
@@ -27,8 +50,6 @@ class UserCustomerController {
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: "Validação de dados falhou" });
     }
-
-    const { name: nameR , cpf: cpfR, password, email: emailR } = req.body;
 
     const emailExist = await UserCustumer.findOne({email: emailR});
     const cpfExist = await UserCustumer.findOne({cpf: cpfR});
@@ -113,6 +134,34 @@ class UserCustomerController {
   // }
 
   async update(req, res) {
+    const { name: nameR, email: emailR, oldPassword, password, cpf: cpfR } = req.body;
+      
+      if (nameR !== undefined) {
+        if (nameR.trim() === "") {
+          delete req.body.name;
+        }
+      }
+      if (emailR !== undefined) {
+        if (emailR.trim() === "") {
+          delete req.body.email;
+        }  
+      }
+      if (cpfR !== undefined) {
+        if (cpfR.trim() === "") {
+          delete req.body.cpf;
+        }  
+      }
+      if (oldPassword !== undefined) {
+        if (oldPassword.trim() === "") {
+          delete req.body.oldPassword;
+        }  
+      }
+      if (password !== undefined) {
+        if (password.trim() === "") {
+          delete req.body.password;
+        }  
+      }
+      
     const schema = Yup.object().shape({
       name: Yup.string(),
       email: Yup.string().email(),
@@ -133,8 +182,6 @@ class UserCustomerController {
     }
 
     const { id } = req.params;
-    const { email: emailR, oldPassword, password, cpf: cpfR } = req.body;
-
     const userCustomer = await UserCustumer.findById(id);
 
     if (userCustomer.cpf !== cpfR && cpfR) {
@@ -153,10 +200,10 @@ class UserCustomerController {
       }
     }
 
-    if (password) {
+    if (password && oldPassword) {
       const checkPassword = await bcrypt.compare(oldPassword, userCustomer.password_hash);
 
-      if (oldPassword && !(checkPassword)) {
+      if (!(checkPassword)) {
         return res.status(401).json({ error: "Senha incorreta" });
       }  
 
