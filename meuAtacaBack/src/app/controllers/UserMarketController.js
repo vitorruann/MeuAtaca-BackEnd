@@ -4,11 +4,16 @@ import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 class UserMarketController {
   async store(req, res) {
-    const {name: nameR, cnpj: cnpjR , password: passwordR} = req.body;
+    const {name: nameR, email: emailR, cnpj: cnpjR , password: passwordR} = req.body;
 
     if (nameR !== undefined) {
       if (nameR.trim() === "") {
         delete req.body.name;
+      }
+    }
+    if (emailR !== undefined) {
+      if (emailR.trim() === "") {
+        delete req.body.email;
       }
     }
     if (cnpjR !== undefined) {
@@ -24,6 +29,7 @@ class UserMarketController {
 
     const schema = Yup.object().shape({
       name: Yup.string().required(),
+      email: Yup.string().email().required(),
       cnpj: Yup.string().required(),
       password: Yup.string().min(6).required(),
     });
@@ -34,6 +40,11 @@ class UserMarketController {
 
 
     const cnpjExist = await UserMarket.findOne({cnpj: cnpjR});
+    const emailExist = await UserMarket.findOne({email: emailR});
+
+    if (emailExist) {
+      return res.status(400).json({ error: "Email já cadastrado." });
+    }
 
     if (cnpjExist) {
       return res.status(400).json({ error: "CNPJ já cadastrado." });
@@ -43,17 +54,19 @@ class UserMarketController {
 
     const addUser = {
       name: nameR,
+      email: emailR,
       cnpj: cnpjR,
       password_hash
     }
 
     const response = await UserMarket.create(addUser);
 
-    const { _id, name , cnpj } = response;
+    const { _id, name, email, cnpj } = response;
 
     const userMarket = {
       id: _id,
       name,
+      email,
       cnpj
     };
     
@@ -65,6 +78,7 @@ class UserMarketController {
 
     const allMarkets = response.map(r => ({
       id: r._id,
+      email: r.email,
       name: r.name,
       cnpj: r.cnpj,
     }));
@@ -82,11 +96,12 @@ class UserMarketController {
 
     const response = await UserMarket.findById(id);
 
-    const { _id, name, cnpj } =  response;
+    const { _id, name, email, cnpj } =  response;
 
     const userMarket = {
       id: _id,
       name,
+      email,
       cnpj
     }
 
@@ -94,11 +109,16 @@ class UserMarketController {
   }
 
   async update(req, res) {
-    const { name: nameR, cnpj: cnpjR , password: passwordR, oldPassword } = req.body;
+    const { name: nameR, email: emailR, cnpj: cnpjR , password: passwordR, oldPassword } = req.body;
 
     if (nameR !== undefined) {
       if (nameR.trim() === "") {
         delete req.body.name;
+      }
+    }
+    if (emailR !== undefined) {
+      if (emailR.trim() === "") {
+        delete req.body.email;
       }
     }
     if (cnpjR !== undefined) {
@@ -119,6 +139,7 @@ class UserMarketController {
 
     const schema = Yup.object().shape({
       name: Yup.string(),
+      email: Yup.string().email(),
       cnpj: Yup.string(),
       oldPassword: Yup.string().min(6),
       password: Yup.string()
@@ -138,12 +159,19 @@ class UserMarketController {
 
     const userReturn = await UserMarket.findById(id);
 
+    if (emailR !== userReturn.email && emailR) {
+      const emailExist = await UserMarket.findOne({email: emailR});
+
+      if (emailExist) {
+        return res.status(400).json({ error: "Email já cadastrado." });
+      }
+    }
+
 
     if (cnpjR !== userReturn.cnpj && cnpjR) {
       const cnpjExist = await UserMarket.findOne({cnpj: cnpjR});
       
       if (cnpjExist) {
-
         return res.status(400).json({ error: "CNPJ já cadastrado." });
       }  
     }
@@ -164,11 +192,12 @@ class UserMarketController {
 
       const response = await UserMarket.findByIdAndUpdate({_id: id}, userUpdate);
 
-      const { _id, name, cnpj } = response;
+      const { _id, name, email, cnpj } = response;
 
       const userMarket = {
         id: _id,
         name,
+        email,
         cnpj
       }
 
@@ -177,11 +206,12 @@ class UserMarketController {
 
     const response = await UserMarket.findByIdAndUpdate({_id: id}, req.body);
 
-    const { _id, name, cnpj } = response;
+    const { _id, name, email, cnpj } = response;
 
       const userMarket = {
         id: _id,
         name,
+        email,
         cnpj
       }
 
@@ -201,11 +231,12 @@ class UserMarketController {
 
     console.log(test);
 
-    const { _id, name, cnpj } = response;
+    const { _id, name, email, cnpj } = response;
 
     const userDeleted = {
       id: _id,
       name,
+      email,
       cnpj
     }
 

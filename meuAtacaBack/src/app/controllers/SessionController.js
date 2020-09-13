@@ -39,7 +39,7 @@ class SessionController {
 
   async storeM(req, res) {
     const schema = Yup.object().shape({
-      cnpj: Yup.string().required(),
+      email: Yup.string().email().required(),
       password: Yup.string().required()
     });
 
@@ -47,12 +47,12 @@ class SessionController {
       return res.status(400).json({ error: "Validação dos dados falho" });
     }
 
-    const { cnpj, password } = req.body;
+    const { email, password } = req.body;
 
-    const userMarket = await UserMarket.findOne({ cnpj: cnpj});
+    const userMarket = await UserMarket.findOne({email: email});
 
     if (!userMarket) {
-      return res.status(401).json({ error: "CNPJ não encontrado"});
+      return res.status(401).json({ error: "Email não encontrado"});
     }
 
     const checkPassword = await bcrypt.compare(password, userMarket.password_hash);
@@ -61,11 +61,12 @@ class SessionController {
       return res.status(401).json({ error: "Senha incorreta"});
     }
 
-    const { name, id } = userMarket;
+    const { id, name, cnpj } = userMarket;
 
     return res.json({
       id,
       name,
+      email,
       cnpj
     })
   }

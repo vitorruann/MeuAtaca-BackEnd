@@ -7,6 +7,11 @@ const UserMarketSchema = new Schema({
     required: true
   },
 
+  email : {
+    type: String,
+    required: true
+  },
+
   cnpj : {
     type: String,
     required: true
