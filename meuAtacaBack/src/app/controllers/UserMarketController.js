@@ -1,4 +1,5 @@
 import UserMarket from '../models/UserMarket';
+import Promotion from '../models/Promotion';
 import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 class UserMarketController {
@@ -195,6 +196,10 @@ class UserMarketController {
     }
 
     const response = await UserMarket.findByIdAndDelete(id);
+
+    const test = await Promotion.remove({ marketID: id });
+
+    console.log(test);
 
     const { _id, name, cnpj } = response;
 

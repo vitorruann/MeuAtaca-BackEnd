@@ -1,4 +1,5 @@
 import Promotion from '../models/Promotion';
+import UserMarket from '../models/UserMarket';
 import * as Yup from 'yup';
 
 class PromotionController {
@@ -37,12 +38,17 @@ class PromotionController {
       return res.status(400).json({ error: "Usuário não foi informado" }); 
     }
 
+    const userMarket = await UserMarket.findById(marketID);
+
+    console.log(userMarket);
+
     const promocao = {
       product,
       value,
       quantity,
       description,
-      marketID
+      marketID,
+      marketName: userMarket.name
     }
 
     const response = await Promotion.create(promocao);

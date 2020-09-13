@@ -25,6 +25,11 @@ const PromotionSchema = new Schema({
   marketID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'UserMarket'
+  },
+
+  marketName: {
+    type: mongoose.Schema.Types.String,
+    ref: 'UserMarket'
   }
 
 });
