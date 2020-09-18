@@ -16,7 +16,8 @@ Axios é um cliente HTTP, que funciona tanto no browser quanto em node.js. A bib
 
 <br/>
 
-[](https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/axios.JPG)
+<img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/axios.JPG"/>
+
 
 Neste caso estamos exportando por default a api. Então, quando formos usar, precisaramos importar.
 
