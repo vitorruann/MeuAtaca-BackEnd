@@ -225,11 +225,9 @@ class UserMarketController {
       return res.status(400).json({ error: "Usuário mercado não foi informado" }); 
     }
 
+    await Promotion.remove({ marketID: id });
+
     const response = await UserMarket.findByIdAndDelete(id);
-
-    const test = await Promotion.remove({ marketID: id });
-
-    console.log(test);
 
     const { _id, name, email, cnpj } = response;
 
