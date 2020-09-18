@@ -26,7 +26,7 @@ Neste caso estamos exportando por default a api. Então, quando formos usar, pre
 
 <br/>
 
-[](InsominiaReqRes.JPG)
+<img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/InsominiaReqRes.JPG"/>
 
 <br/>
 
@@ -36,7 +36,7 @@ Aqui estamos fazendo a requsição para a rota **/newCustomer**, e passando no b
 
 <br/>
 
-[](RequiPostCriar.JPG)
+<img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiPostCriar.JPG"/>
 
 <br/>
 
