@@ -30,13 +30,18 @@ Será desenvolvido uma **API** de backend utilizando node.js, e estará disponiv
 ## Como usar a API?
 </br>
 
-### Usuários Mercados/Atacadistas (WEB)
-* [Rotas para manter Mercados/Atacadistas](Info/userMarket/README.md)
-* [Rotas para manter promoção](Info/promotion/README.md)
-* [Rota para login](Info/login/marketLogin/README.md)
+### Criar base URL para requisições
+* [Instalar e Configurar o Axios](Info/axios/README.MD)
+
 ### Usuários do aplicativo (Mobile)
 * [Rotas para manter usuários](Info/userCustomer/README.md)
 * [Rotas para manter promoções](Info/promotion/README.md)
 * [Rota para login](Info/login/userLogin/README.md)
+
+### Usuários Mercados/Atacadistas (WEB)
+* [Rotas para manter Mercados/Atacadistas](Info/userMarket/README.md)
+* [Rotas para manter promoção](Info/promotion/README.md)
+* [Rota para login](Info/login/marketLogin/README.md)
+
 ## Licença
 MIT © [@Vitorruan](https://github.com/vitorruann)
