@@ -18,7 +18,7 @@ Para instalar a lib do axios, utilizando o **yarn** utilize o comando abaixo
 
 Estamos exportando por default a api. Então, quando formos usar, precisaramos importar.
 
-<img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/axios/importAxios.JPG"/>
+<img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/axios/importAxios.PNG"/>
 
 **Exemplo de importação do axios para realizar as requisições**
 
