@@ -16,6 +16,7 @@ https://meuataca-backend.herokuapp.com/newCustomer, {
 ``` 
 
 ### Criar usuário (/newCustomer)
+* **INSOMNIA**
 
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/InsominiaReqRes.JPG"/>
 
@@ -25,6 +26,8 @@ Na imagem acima, estamos fazendo a requsição para a rota **/newCustomer**, e p
 
 <br/>
 
+* **AXIOS**
+  
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiPostCriar.JPG"/>
 
 **Exemplo de uma requisição(req) do tipo POST para a criação de um usuário e a resposta (res) do backend utilizando Axios**
@@ -45,7 +48,8 @@ https://meuataca-backend.herokuapp.com/updateCustomer/IdUsuario, {
 ``` 
 
 ### Alterar usuário (/updateCustomer/:id)
-
+* **INSOMNIA**
+  
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/InsominiaReqResUpdate.JPG"/>
 
 **Exemplo de uma requisição(req) do tipo PUT para a alteração de um usuário e a resposta (res) do backend utilizando Insomnia**
@@ -54,6 +58,8 @@ Na imagem acima, estamos fazendo a requsição para a rota **/updateCustomer/5f6
 
 <br/>
 
+* **AXIOS**
+  
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiPutAlterar.JPG"/>
 
 **Exemplo de uma requisição(req) do tipo PUT para a criação de um usuário e a resposta (res) do backend utilizando Axios**
@@ -67,7 +73,8 @@ https://meuataca-backend.herokuapp.com/updateCustomer/IdUsuario;
 ``` 
 
 ### Deletar usuário (/deleteCustomer/:id)
-
+* **INSOMNIA**
+  
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/InsominiaReqResDelete.JPG"/>
 
 **Exemplo de uma requisição(req) do tipo DELETE para a exclução de um usuário e a resposta (res) do backend utilizando Insomnia**
@@ -76,6 +83,8 @@ Na imagem acima, estamos fazendo a requsição para a rota **/deleteCustomer/5f6
 
 <br/>
 
+* **AXIOS**
+  
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiDeleteDeletar.JPG"/>
 
 **Exemplo de uma requisição(req) do tipo DELETE para a criação de um usuário e a resposta (res) do backend utilizando Axios**
