@@ -22,6 +22,7 @@ Estamos exportando por default a api. Então, quando formos usar, precisaramos i
 
 **Exemplo de importação do axios para realizar as requisições**
 
+## Licença
 MIT © [@Vitorruan](https://github.com/vitorruann)
 
 ## [Voltar](../../README.md)

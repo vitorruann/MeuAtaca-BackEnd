@@ -35,7 +35,7 @@ Será desenvolvido uma **API** de backend utilizando node.js, e estará disponiv
 
 ### Usuários final
 * [Rotas para manter usuários](Info/userCustomer/README.md)
-* [Rotas para manter promoções](Info/promotion/README.md)
+* [Rotas para visualizar promoções](Info/promotion/README.md)
 * [Rota para login](Info/login/userLogin/README.md)
 
 ### Usuários Mercados/Atacadistas
