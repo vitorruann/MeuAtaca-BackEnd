@@ -21,7 +21,9 @@ https://meuataca-backend.herokuapp.com/newCustomer, {
 
 **Exemplo de uma requisição(req) do tipo POST para a criação de um usuário e a resposta (res) do backend utilizando Insomnia**
 
-Na imagem acima, estamos fazendo a requsição para a rota **/newCustomer**, e passando no body da requsição um JSON com as informações de (nome, email, cpf e password). Como retorno, recebemos um status **200 OK**, informando que a requisição foi feita com sucesso e também recebemos o retorno com as informações do usuário que foi criado, inclusive o ID que é gerado de forma automática. 
+Na imagem acima, estamos fazendo a requsição para a rota **/newCustomer**, e passando no body da requsição um JSON com as informações de (nome, email, cpf e password). Como retorno, recebemos um status **200 OK**, informando que a requisição foi feita com sucesso e também recebemos o retorno com as informações do usuário que foi criado, inclusive o ID que é gerado de forma automática.
+
+<br/>
 
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiPostCriar.JPG"/>
 
@@ -50,6 +52,8 @@ https://meuataca-backend.herokuapp.com/updateCustomer/IdUsuario, {
 
 Na imagem acima, estamos fazendo a requsição para a rota **/updateCustomer/5f65437063c77800217cdde6**, onde **5f65437063c77800217cdde6** é o id do usuário criado anteriormente e passando no body da requsição um JSON com as informações de (nome, email, cpf, password, confirmPassword e oldPassword). Como retorno, recebemos um status **200 OK**, informando que a requisição foi feita com sucesso e também recebemos o retorno com as informações do usuário que foi alterado, inclusive o ID que é gerado de forma automática. Neste exemplo enviamos todos os campos para alteração, mas não é necessário, mas caso se deseje alterar a senha, será necessário enviar os 3 campos. Para informações sobre os erros clique [aqui](). 
 
+<br/>
+
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiPutAlterar.JPG"/>
 
 **Exemplo de uma requisição(req) do tipo PUT para a criação de um usuário e a resposta (res) do backend utilizando Axios**
@@ -69,6 +73,8 @@ https://meuataca-backend.herokuapp.com/updateCustomer/IdUsuario;
 **Exemplo de uma requisição(req) do tipo DELETE para a exclução de um usuário e a resposta (res) do backend utilizando Insomnia**
 
 Na imagem acima, estamos fazendo a requsição para a rota **/deleteCustomer/5f663902700e530021c76943**, onde **5f663902700e530021c76943** é o id do usuário criado anteriormente. Como retorno, recebemos um status **200 OK**, informando que a requisição foi feita com sucesso e também recebemos o retorno com as informações do usuário que foi excluido. Para informações sobre os erros clique [aqui](). 
+
+<br/>
 
 <img src="https://github.com/vitorruann/MeuAtaca-BackEnd/blob/master/Info/userCustomer/RequiDeleteDeletar.JPG"/>
 
