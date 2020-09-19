@@ -50,4 +50,7 @@ Aqui estamos fazendo a requsição para a rota **/newCustomer**, e passando no b
 
 Neste exemplo, temos uma função, que recebe como parametro a váriavel **data** que veio do form contendo os valores de (nome, email, cpf e password). E utilizando a api criada anteriormente do axios, realizamos a requisição de **POST** para a rota **/newCustomer**, passando no body da requisição os valores name, email, cpf e password
 
+## Licença
+MIT © [@Vitorruan](https://github.com/vitorruann)
+
 [Voltar](../../README.md)
