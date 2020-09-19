@@ -1,6 +1,6 @@
 # Manter Usuário final
 
-Neste local iremos mostrar com exemplos **práticos** como realizar **requisições** para o backend e como deverá ser as **respostas**. Este local é exclusivo para as rotas de **usuário final**, que inicialmente será feito na plataforma Mobile. Importante resaltar que os exemplos foram criados utilizando o Freamework **REACT**.
+Neste local iremos mostrar com exemplos **práticos** como realizar **requisições** para o backend e como deverá ser as **respostas**. Este local é exclusivo para as rotas de **usuário final**. Importante resaltar que os exemplos foram criados utilizando o Freamework **REACT**.
 
 **Importante verificar o tutorial da criação da base url com axios antes de continuar, para acessar clique [aqui](/Info/axios/README.MD)**
 
@@ -32,7 +32,7 @@ Na imagem acima, estamos fazendo a requsição para a rota **/newCustomer**, e p
 
 **Exemplo de uma requisição(req) do tipo POST para a criação de um usuário e a resposta (res) do backend utilizando Axios**
 
-No exemplo acima, temos uma função (**handleSubmit**), que recebe como parametro a váriavel **data** que veio do form contendo os valores de (nome, email, cpf, password). E utilizando a api criada anteriormente do axios, realizamos a requisição de **POST** para a rota **/newCustomer**, passando no body da requisição os valores name, email, cpf e password. Tudo isso dentro de uma condição try catch, que caso ocorra algum erro na criação do usuário, irá gerar um alert com as informações do erro (para mais informações sobre os erros clique [aqui]()).
+No exemplo acima, temos uma função (**handleSubmit**), que recebe como parametro a váriavel **data** que veio do form contendo os valores de (nome, email, cpf, password). E utilizando a api criada anteriormente do axios, realizamos a requisição de **POST** para a rota **/newCustomer**, passando no body da requisição os valores name, email, cpf e password. Tudo isso dentro de uma condição try catch, que caso ocorra algum erro na criação do usuário, irá gerar um alert com as informações do erro (para mais informações sobre os erros clique [aqui]().
 
 # Rota para alterar usuários
 Base para envio da requsição
