@@ -69,7 +69,7 @@ No exemplo acima, temos uma função (**handleSubmit**), que recebe como paramet
 # Rota para deletar usuários
 Base para envio da requsição
 ```
-https://meuataca-backend.herokuapp.com/updateCustomer/IDUsuario;
+https://meuataca-backend.herokuapp.com/deleteCustomer/IDUsuario;
 ``` 
 
 ### Deletar usuário (/deleteCustomer/:id)

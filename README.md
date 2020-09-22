@@ -34,14 +34,14 @@ Será desenvolvido uma **API** de backend utilizando node.js, e estará disponiv
 * [Instalar e Configurar o Axios](Info/axios/README.MD)
 
 ### Usuários final
+* [Rota para login](Info/login/userLogin/README.md)
 * [Rotas para manter usuários](Info/userCustomer/README.md)
 * [Rotas para visualizar promoções](Info/promotion/README.md)
-* [Rota para login](Info/login/userLogin/README.md)
 
 ### Usuários Mercados/Atacadistas
+* [Rota para login](Info/login/marketLogin/README.md)
 * [Rotas para manter Mercados/Atacadistas](Info/userMarket/README.md)
 * [Rotas para manter promoção](Info/promotion/README.md)
-* [Rota para login](Info/login/marketLogin/README.md)
 
 ### Erros e Validação dos dados
 * [Informações sobre as validações de dados e Erros](Info/erros/README.MD)

@@ -107,4 +107,7 @@ Na imagem acima, estamos fazendo a requsição para a rota **/allPromotion**. Co
 
 No exemplo acima, temos uma função (**useEffect**) que é executada assim que a pagina é montada. Utilizando a api criada anteriormente do axios, para realizar a requisição de **GET** para a rota **/allPromotion**. Tudo isso dentro de uma condição try catch, que caso ocorra algum erro na visualização das promoções, irá gerar um alert com as informações do erro (para mais informações sobre os erros clique [aqui](../erros/README.MD).
 
-[Voltar](../../README.md)
+## Licença
+MIT © [@Vitorruan](https://github.com/vitorruann)
+
+## [Voltar](../../README.md)
