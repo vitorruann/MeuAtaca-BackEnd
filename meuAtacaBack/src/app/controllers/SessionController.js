@@ -18,7 +18,7 @@ class SessionController {
     const user = await UserCustomer.findOne({email: email});
 
     if (!user) {
-      return res.status(401).json({ error: "Usuário não encontrado"});
+      return res.status(401).json({ error: "Email não encontrado"});
     }
 
     const checkPassword = await bcrypt.compare(password, user.password_hash);

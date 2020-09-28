@@ -35,7 +35,7 @@ class PromotionController {
     const marketID = req.params.id;
 
     if (!marketID) {
-      return res.status(400).json({ error: "Usuário não foi informado" }); 
+      return res.status(400).json({ error: "Mercado não existe ou não foi informado" }); 
     }
 
     const userMarket = await UserMarket.findById(marketID);
@@ -80,7 +80,7 @@ class PromotionController {
     const marketID = req.params.id;
     
     if (!marketID) {
-      return res.status(400).json({ error: "Usuário não existe ou não foi informado" }); 
+      return res.status(400).json({ error: "Mercado não existe ou não foi informado" }); 
     }
 
     const response = await Promotion.find({ marketID })
