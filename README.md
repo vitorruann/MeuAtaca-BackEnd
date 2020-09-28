@@ -44,7 +44,7 @@ Será desenvolvido uma **API** de backend utilizando node.js, e estará disponiv
 * [Rotas para manter promoção](Info/promotion/README.md)
 
 ### Erros e Validação dos dados
-* [Informações sobre as validações de dados e Erros](Info/erros/README.MD)
+* [Informações sobre as validações de dados e Erros](Info/errors/README.MD)
 
 ## Licença
 MIT © [@Vitorruan](https://github.com/vitorruann)
