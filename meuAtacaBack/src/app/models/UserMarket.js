@@ -17,6 +17,11 @@ const UserMarketSchema = new Schema({
     required: true
   },
 
+  urlImageMarket: {
+    type: String,
+    required: false
+  },
+
   password_hash : {
     type: String,
     required: true

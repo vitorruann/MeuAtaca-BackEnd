@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 class UserMarketController {
   async store(req, res) {
-    const {name: nameR, email: emailR, cnpj: cnpjR , password: passwordR} = req.body;
+    const {name: nameR, email: emailR, cnpj: cnpjR, password: passwordR} = req.body;
 
     if (nameR !== undefined) {
       if (nameR.trim() === "") {
@@ -67,7 +67,7 @@ class UserMarketController {
       id: _id,
       name,
       email,
-      cnpj
+      cnpj,
     };
     
     return res.json(userMarket)
@@ -81,6 +81,7 @@ class UserMarketController {
       email: r.email,
       name: r.name,
       cnpj: r.cnpj,
+      urlImageMarket: r.urlImageMarket
     }));
 
     
@@ -96,20 +97,21 @@ class UserMarketController {
 
     const response = await UserMarket.findById(id);
 
-    const { _id, name, email, cnpj } =  response;
+    const { _id, name, email, cnpj, urlImageMarket } =  response;
 
     const userMarket = {
       id: _id,
       name,
       email,
-      cnpj
+      cnpj,
+      urlImageMarket
     }
 
     return res.json(userMarket);
   }
 
   async update(req, res) {
-    const { name: nameR, email: emailR, cnpj: cnpjR , password: passwordR, oldPassword } = req.body;
+    const { name: nameR, email: emailR, cnpj: cnpjR, urlImageMaket: urlImageMaketR, password: passwordR, oldPassword } = req.body;
 
     if (nameR !== undefined) {
       if (nameR.trim() === "") {
@@ -124,6 +126,11 @@ class UserMarketController {
     if (cnpjR !== undefined) {
       if (cnpjR.trim() === "") {
         delete req.body.cnpj;
+      }  
+    }
+    if (urlImageMaketR !== undefined) {
+      if (urlImageMaketR.trim() === "") {
+        delete req.body.urlImageMaket;
       }  
     }
     if (oldPassword !== undefined) {
@@ -141,6 +148,7 @@ class UserMarketController {
       name: Yup.string(),
       email: Yup.string().email(),
       cnpj: Yup.string(),
+      urlImageMaket: Yup.string(),
       oldPassword: Yup.string().min(6),
       password: Yup.string()
         .min(6)
@@ -192,13 +200,14 @@ class UserMarketController {
 
       const response = await UserMarket.findByIdAndUpdate({_id: id}, userUpdate);
 
-      const { _id, name, email, cnpj } = response;
+      const { _id, name, email, cnpj, urlImageMarket } = response;
 
       const userMarket = {
         id: _id,
         name,
         email,
-        cnpj
+        cnpj,
+        urlImageMarket
       }
 
       return res.json(userMarket);
@@ -206,13 +215,14 @@ class UserMarketController {
 
     const response = await UserMarket.findByIdAndUpdate({_id: id}, req.body);
 
-    const { _id, name, email, cnpj } = response;
+    const { _id, name, email, cnpj, urlImageMarket } = response;
 
       const userMarket = {
         id: _id,
         name,
         email,
-        cnpj
+        cnpj,
+        urlImageMarket
       }
 
       return res.json(userMarket);
@@ -229,13 +239,14 @@ class UserMarketController {
 
     const response = await UserMarket.findByIdAndDelete(id);
 
-    const { _id, name, email, cnpj } = response;
+    const { _id, name, email, cnpj, urlImageMarket } = response;
 
     const userDeleted = {
       id: _id,
       name,
       email,
-      cnpj
+      cnpj,
+      urlImageMarket
     }
 
     return res.json(userDeleted);

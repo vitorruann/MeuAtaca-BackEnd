@@ -22,6 +22,11 @@ const PromotionSchema = new Schema({
     required: true
   },
 
+  urlImage: {
+    type: String,
+    required: true
+  },
+
   marketID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'UserMarket'

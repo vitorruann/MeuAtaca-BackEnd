@@ -24,14 +24,15 @@ class PromotionController {
       product: Yup.string().required(),
       value: Yup.number().required(),
       quantity: Yup.number().required(),
-      description: Yup.string()
+      description: Yup.string().required(),
+      urlImage: Yup.string().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: "Validação dos dados falhou" }); 
     }
 
-    const { product, value, quantity, description } = req.body;
+    const { product, value, quantity, description, urlImage } = req.body;
     const marketID = req.params.id;
 
     if (!marketID) {
@@ -47,6 +48,7 @@ class PromotionController {
       value,
       quantity,
       description,
+      urlImage,
       marketID,
       marketName: userMarket.name
     }
