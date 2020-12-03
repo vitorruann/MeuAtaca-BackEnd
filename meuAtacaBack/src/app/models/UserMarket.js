@@ -19,7 +19,7 @@ const UserMarketSchema = new Schema({
 
   urlImageMarket: {
     type: String,
-    required: false
+    default: 'ttps://i.pinimg.com/originals/02/30/42/023042e35efb9dbd3fd68ae1bfcfa202.png'
   },
 
   password_hash : {
